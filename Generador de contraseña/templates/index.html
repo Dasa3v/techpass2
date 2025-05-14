@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4 title">Generador de Contraseñas Seguras</h2>
+    
+    <form method="POST" class="mb-5 password-form">
+        <div class="slider-container">
+            <label class="form-label">Longitud de la contraseña:</label>
+            <input type="range" 
+                   name="length" 
+                   min="6" 
+                   max="12" 
+                   value="12" 
+                   class="form-range" 
+                   id="lengthRange"
+                   list="marks">
+            
+            <div class="slider-marks">
+                {% for i in range(6, 13) %}
+                <div class="slider-mark {% if i == 12 %}active{% endif %}" data-value="{{ i }}"></div>
+                {% endfor %}
+            </div>
+            
+
+        </div>
+
+        <div class="options-grid mt-4">
+            <div class="form-check option-item">
+                <input class="form-check-input" type="checkbox" name="upper" checked id="upperCheck">
+                <label class="form-check-label" for="upperCheck">Mayúsculas (A-Z)</label>
+            </div>
+            <div class="form-check option-item">
+                <input class="form-check-input" type="checkbox" name="numbers" checked id="numbersCheck">
+                <label class="form-check-label" for="numbersCheck">Números (0-9)</label>
+            </div>
+            <div class="form-check option-item">
+                <input class="form-check-input" type="checkbox" name="symbols" checked id="symbolsCheck">
+                <label class="form-check-label" for="symbolsCheck">Símbolos (!@#$%)</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn generate-btn mt-4">
+            <i class="fas fa-key me-2"></i> GENERAR CONTRASEÑA
+        </button>
+    </form>
+
+    {% if password %}
+    <div class="password-result mt-5">
+        <h4 class="result-title">Tu contraseña generada:</h4>
+        <div class="input-group">
+            <input type="text" class="form-control password-input" value="{{ password }}" id="passwordField" readonly>
+            <button class="btn copy-btn" onclick="copyPassword()">
+                <i class="fas fa-copy me-1"></i> Copiar
+            </button>
+        </div>
+        {# Sistema de fortaleza mejorado #}
+        {% set pwd_length = password|length %}
+        <div class="strength-info mt-2">
+            Fortaleza: 
+            <span class="strength-text">
+                {% if pwd_length <= 6 %}Débil
+                {% elif pwd_length <= 9 %}Media
+                {% else %}Fuerte
+                {% endif %}
+            </span>
+        </div>
+        <div class="strength-meter mt-1">
+            <div class="strength-bar 
+                {% if pwd_length <= 6 %}strength-weak
+                {% elif pwd_length <= 9 %}strength-medium
+                {% else %}strength-strong
+                {% endif %}">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="alert alert-danger mt-4">
+        {{ error }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

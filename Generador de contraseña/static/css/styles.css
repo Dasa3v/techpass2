@@ -1,0 +1,237 @@
+:root {
+    --tech-dark: #0a192f;
+    --tech-blue: #00b4d8;
+    --tech-green: #27ae60;
+    --tech-red: #e74c3c;
+    --tech-light: #e6f1ff;
+    --tech-gray: #2a3a56;
+    --tech-gray-light: #3a4a66;
+}
+
+body {
+    background-color: var(--tech-dark);
+    color: var(--tech-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.tech-navbar {
+    background-color: var(--tech-dark);
+    border-bottom: 1px solid var(--tech-blue);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    color: var(--tech-blue) !important;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Contenido principal */
+.container {
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.title {
+    color: var(--tech-blue);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
+}
+
+/* Slider - Compatibilidad completa */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: transparent;
+    border-radius: 4px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+/* Pista del slider - WebKit */
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: var(--tech-gray);
+    border-radius: 4px;
+    border: none;
+}
+
+/* Control deslizante - WebKit */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--tech-blue);
+    border: 2px solid var(--tech-light);
+    cursor: grab;
+    margin-top: -7px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Pista del slider - Firefox */
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    background: var(--tech-gray);
+    border-radius: 4px;
+    border: none;
+}
+
+/* Control deslizante - Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--tech-blue);
+    border: 2px solid var(--tech-light);
+    cursor: grab;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Marcadores del slider */
+.slider-marks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.slider-mark {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--tech-gray-light);
+    position: relative;
+}
+
+.slider-mark::after {
+    content: attr(data-value);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--tech-light);
+}
+
+
+
+.length-display {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--tech-blue);
+    transition: all 0.3s;
+}
+
+/* Opciones */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.option-item {
+    background-color: rgba(42, 58, 86, 0.5);
+    padding: 0.8rem;
+    border-radius: 6px;
+    border: 1px solid var(--tech-gray-light);
+}
+
+/* Botones */
+.generate-btn {
+    background-color: var(--tech-blue);
+    color: var(--tech-dark);
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.generate-btn:hover {
+    background-color: #0082a3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 180, 216, 0.3);
+}
+
+/* Resultados */
+.password-result {
+    background-color: rgba(42, 58, 86, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--tech-blue);
+}
+
+.result-title {
+    color: var(--tech-blue);
+    margin-bottom: 1rem;
+}
+
+.password-input {
+    background-color: var(--tech-dark);
+    color: var(--tech-blue);
+    border: 2px solid var(--tech-blue);
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'Courier New', monospace;
+}
+
+.copy-btn {
+    background-color: var(--tech-blue);
+    color: white;
+    border: 2px solid var(--tech-blue);
+    transition: all 0.3s;
+}
+
+.copy-btn:hover {
+    background-color: var(--tech-dark);
+    color: var(--tech-blue);
+}
+
+/* Medidor de fuerza */
+.strength-meter {
+    height: 6px;
+    background-color: var(--tech-gray);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.strength-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--tech-red), var(--tech-green));
+    transition: width 0.5s ease;
+}
+
+/* Footer */
+.tech-footer {
+    background-color: var(--tech-dark);
+    border-top: 1px solid var(--tech-blue);
+    padding: 1.5rem;
+    margin-top: auto;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+}
